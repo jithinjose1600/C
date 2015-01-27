@@ -79,5 +79,20 @@ public class OrderQueueTest {
       }
         
     }
+    @Test
+    public void testWhenNoListOfPurchasesThenThrowException() {
+        OrderQueue orderQueue = new OrderQueue();
+        Order order = new Order("CUST00001", "ABC Construction");
+        try {
+        order.addPurchase(new Purchase("", 0));
+        order.addPurchase(new Purchase("", 0));
+        orderQueue.add(order);
+        fail("Exception, No list of purchases");
+        }
+        catch(Exception e)
+        {
+          assertThat(e.getMessage(), StringContains.containsString("No list of purchases"));  
+        }
+    }
     
 }
