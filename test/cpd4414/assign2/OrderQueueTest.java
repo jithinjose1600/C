@@ -26,6 +26,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.internal.matchers.StringContains;
 
 /**
  *
@@ -63,6 +64,20 @@ public class OrderQueueTest {
         long expResult = new Date().getTime();
         long result = order.getTimeReceived().getTime();
         assertTrue(Math.abs(result - expResult) < 1000);
+    }
+    @Test
+    public void testWhenNeitherCustomerIdNorCustomerNameExistsThenThrowException() {
+      OrderQueue orderQueue = new OrderQueue();
+      try {
+        Order order = new Order("", "");
+        orderQueue.add(order);
+          fail("Exception, Customer name and id not found");
+      }
+      catch(Exception e)
+      {
+          assertThat(e.getMessage(), StringContains.containsString("Customer name and id not found"));
+      }
+        
     }
     
 }
