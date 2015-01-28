@@ -84,8 +84,6 @@ public class OrderQueueTest {
         OrderQueue orderQueue = new OrderQueue();
         Order order = new Order("CUST00001", "ABC Construction");
         try {
-        order.addPurchase(new Purchase("", 0));
-        order.addPurchase(new Purchase("", 0));
         orderQueue.add(order);
         fail("Exception, No list of purchases");
         }

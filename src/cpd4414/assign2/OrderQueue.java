@@ -16,6 +16,7 @@
 
 package cpd4414.assign2;
 
+import java.rmi.server.LoaderHandler;
 import java.util.ArrayDeque;
 import java.util.Date;
 import java.util.Queue;
@@ -32,6 +33,7 @@ public class OrderQueue {
         {
          throw new Exception("Customer name and id not found");
         }
+        
         orderQueue.add(order);
         order.setTimeReceived(new Date());
         
