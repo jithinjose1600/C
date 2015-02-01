@@ -33,9 +33,30 @@ public class OrderQueue {
         {
          throw new Exception("Customer name and id not found");
         }
-        
+        else if(order.getListOfPurchases().isEmpty())
+        {
+            throw  new Exception("No list of purchases");
+        }
         orderQueue.add(order);
         order.setTimeReceived(new Date());
         
+    }
+    
+    public Order getOrder()
+    {
+        if(!orderQueue.isEmpty())
+        {
+            for(Order o : orderQueue)
+            {
+                if(o.getTimeProcessed()==null)
+                {
+                    o.setTimeReceived(new Date());
+                    
+                }
+                return o;
+            }
+        }
+        
+        return null;
     }
 }
